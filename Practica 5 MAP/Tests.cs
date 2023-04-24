@@ -13,6 +13,8 @@ namespace PracticaBase
     public class Tests
     {
         string Alejandretta = "Alejandretta";
+        int defensa = 1;
+        int ataque = 2;
         string Troya = "Troya";
         string Valencia = "Valencia";
         string Sevilla = "Sevilla";
@@ -21,13 +23,13 @@ namespace PracticaBase
         // Métodos auxiliares para crear tablero de pruebas
         // a usar por los tests de unidad.
 
-        //public void CreateTestBoard() //No se como usarlo dentro del test
-        //{
-        //    Board board = new Board();
-        //    board.AddCity("Alejandretta", 0, 1);
+        public void CreateTestBoard(out Board board) //No se como usarlo dentro del test
+        {
+            board = new Board(5,20);
+            board.AddCity( Alejandretta, defensa, 1);
         //    board.AddCity("Alejandretta", 2, 1);
         //    board.AddCity("Troya", 0, 0);
-        //}
+        }
         #endregion
         [Test]
         public void FindCityByNameTest()
@@ -35,9 +37,9 @@ namespace PracticaBase
         /// No se espera que haya ciudades con nombres repetidos
         {
             //Arrange
-            Board board = new Board(5, 20);
+            Board board = new Board(0, 0);
 
-            board.AddCity(Alejandretta, 0, 1);
+            CreateTestBoard(out board);
 
 
             //Act
@@ -46,20 +48,19 @@ namespace PracticaBase
 
             //Assert
             Assert.That(board.GetCityName(city), Is.EqualTo(Alejandretta), "ERROR: Ciudad con nombre repetido");
-            /*  Assert.That( , //ejemplo
-                           ,
-                          "ERROR: Ciudad no encontrada");*/
+            
         }
 
-        //[Test]
+        [Test]
         public void AttackCityTest()
         {
             //Arrange
-
+            Board board = new Board(0, 0);
+            CreateTestBoard(out board);
             //Act
-
+        
             //Assert
-
+            Assert.That(board.AttackCity(0, ataque), Is.EqualTo(ataque> defensa), "Error");
         }
 
         //  [Test]
