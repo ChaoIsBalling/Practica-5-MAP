@@ -1,24 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="packages\NUnit3TestAdapter.4.4.2\build\net462\NUnit3TestAdapter.props" Condition="Exists('packages\NUnit3TestAdapter.4.4.2\build\net462\NUnit3TestAdapter.props')" />
-  <Import Project="packages\NUnit.3.13.3\build\NUnit.props" Condition="Exists('packages\NUnit.3.13.3\build\NUnit.props')" />
+  <Import Project="..\Practica 5 MAP\packages\NUnit3TestAdapter.4.4.2\build\net462\NUnit3TestAdapter.props" Condition="Exists('..\Practica 5 MAP\packages\NUnit3TestAdapter.4.4.2\build\net462\NUnit3TestAdapter.props')" />
+  <Import Project="..\Practica 5 MAP\packages\NUnit.3.13.3\build\NUnit.props" Condition="Exists('..\Practica 5 MAP\packages\NUnit.3.13.3\build\NUnit.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EAC5296E-21EF-4FEA-B1EA-8AAACADE00FA}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Practica_5_MAP</RootNamespace>
-    <AssemblyName>Practica 5 MAP</AssemblyName>
+    <ProjectGuid>{03AA8DC8-04FC-46F6-9E99-618F560EDF40}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tests</RootNamespace>
+    <AssemblyName>Tests</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -28,7 +27,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -38,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="nunit.framework, Version=3.13.3.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>packages\NUnit.3.13.3\lib\net45\nunit.framework.dll</HintPath>
+      <HintPath>..\Practica 5 MAP\packages\NUnit.3.13.3\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,15 +48,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Board.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="TestLista.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <ProjectReference Include="..\Practica 5 MAP\Practica 5 MAP.csproj">
+      <Project>{eac5296e-21ef-4fea-b1ea-8aaacade00fa}</Project>
+      <Name>Practica 5 MAP</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -66,7 +65,7 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\NUnit.3.13.3\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\NUnit.3.13.3\build\NUnit.props'))" />
-    <Error Condition="!Exists('packages\NUnit3TestAdapter.4.4.2\build\net462\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\NUnit3TestAdapter.4.4.2\build\net462\NUnit3TestAdapter.props'))" />
+    <Error Condition="!Exists('..\Practica 5 MAP\packages\NUnit.3.13.3\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\Practica 5 MAP\packages\NUnit.3.13.3\build\NUnit.props'))" />
+    <Error Condition="!Exists('..\Practica 5 MAP\packages\NUnit3TestAdapter.4.4.2\build\net462\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\Practica 5 MAP\packages\NUnit3TestAdapter.4.4.2\build\net462\NUnit3TestAdapter.props'))" />
   </Target>
 </Project>
