@@ -12,8 +12,9 @@ namespace PracticaBase
     public class Tests
     {
         [Test]
-        public int FindCityByName(string cityName)
+        public void FindCityByNameTest()
         {
+         
 
         }
 
