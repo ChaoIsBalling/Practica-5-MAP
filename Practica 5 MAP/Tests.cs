@@ -18,6 +18,7 @@ namespace PracticaBase
                Sevilla = "Sevilla";
         int defensa = 1,
             ataque = 2;
+        
 
         [Test]
         public void FindCityByNameTest()
@@ -25,16 +26,26 @@ namespace PracticaBase
         /// No se espera que haya ciudades con nombres repetidos
         {
             //Arrange
-            Board board = new Board(5, 3); //Creamos Board(maxcities, numdecks)
-            board.AddCity(Alejandretta, defensa, 1); //AddCity(nombre, defensa, puntos)
-            board.AddCityToDeck(Alejandretta, 2); //AddCityToDeck(string cityName, int deckIndex)
+            Board board = new Board(5, 3); //Board(int maxCities, int numDecks)
+            //AddCity(string cityName, int cityDefense, int cityPoints)
+            board.AddCity(Alejandretta, 1, 1); 
+            board.AddCity(Alejandretta, 1, 2);
+            board.AddCity(Troya,1,1);
+            board.AddCity(Sevilla,1,2);
+            board.AddCity(Valencia,1,3);
 
             //Act
-            int city = board.FindCityByName(Alejandretta);
+            int city1 = board.FindCityByName(Troya);
+            int city2 = board.FindCityByName(Alejandretta);
+
 
             //Assert
-            Assert.That(board.GetCityName(city), Is.EqualTo(Alejandretta), "ERROR: Ciudad con nombre repetido");
-            
+            Assert.That(city1,
+                        Is.EqualTo(3), //numero esperado
+                        "ERROR: No se ha encontrado la ciudad en la lista de ciudades."); //si no, test falla
+            Assert.That(city1,
+                        Is.EqualTo(1), //numero esperado
+                        "ERROR: Se han encontrado ciudades repetidas.");
         }
 
         [Test]
@@ -42,11 +53,13 @@ namespace PracticaBase
         {
             //Arrange
             Board board = new Board(0, 0);
-            CreateTestBoard(out board);
+            
             //Act
         
             //Assert
-            Assert.That(board.AttackCity(0, ataque), Is.EqualTo(ataque> defensa), "Error");
+            Assert.That(board.AttackCity(0, ataque),
+                        Is.EqualTo(ataque> defensa), 
+                        "Error");
         }
 
         //  [Test]
