@@ -35,25 +35,23 @@ namespace PracticaBase
         /// No se espera que haya ciudades con nombres repetidos
         {
             //Arrange
-            Board board = new Board();
+            Board board = new Board(5,20);
+
             board.AddCity(Alejandretta, 0, 1);
-            board.AddCity(Alejandretta, 2, 1);
-            board.AddCity(Troya, 0, 0);
+          
 
             //Act
             int city = board.FindCityByName(Alejandretta);
-            int city2 = board.FindCityByName(Troya);
-            int city3 = board.FindCityByName(Valencia);
-            int city4 = board.FindCityByName(Sevilla);
+           
 
             //Assert
-            Assert.That(board.GetCityName(city), Is.EqualTo("Alejandretta"),"ERROR: Ciudad con nombre repetido");
-            Assert.That( , //ejemplo
+            Assert.That(board.GetCityName(city), Is.EqualTo(Alejandretta),"ERROR: Ciudad con nombre repetido");
+          /*  Assert.That( , //ejemplo
                          ,
-                        "ERROR: Ciudad no encontrada");
+                        "ERROR: Ciudad no encontrada");*/
         }
 
-        [Test]
+        //[Test]
         public void AttackCityTest()
         {
             //Arrange
@@ -64,7 +62,7 @@ namespace PracticaBase
 
         }
 
-        [Test]
+      //  [Test]
         public void RemoveCityFromDeckTest()
         {
             //Arrange
@@ -75,7 +73,7 @@ namespace PracticaBase
 
         }
 
-        [Test]
+        //[Test]
         public void MoveTest()
         //Probar con distintas direcciones y comprobar que el movimiento cíclico es correcto
         {

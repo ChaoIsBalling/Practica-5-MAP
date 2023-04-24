@@ -1,0 +1,8 @@
+C:\Users\34615\Documents\PROGramación\Practica 5 MAP\bin\Debug\Practica 5 MAP.exe.config
+C:\Users\34615\Documents\PROGramación\Practica 5 MAP\bin\Debug\Practica 5 MAP.exe
+C:\Users\34615\Documents\PROGramación\Practica 5 MAP\bin\Debug\Practica 5 MAP.pdb
+C:\Users\34615\Documents\PROGramación\Practica 5 MAP\obj\Debug\Practica 5 MAP.csproj.AssemblyReference.cache
+C:\Users\34615\Documents\PROGramación\Practica 5 MAP\obj\Debug\Practica 5 MAP.csproj.SuggestedBindingRedirects.cache
+C:\Users\34615\Documents\PROGramación\Practica 5 MAP\obj\Debug\Practica 5 MAP.csproj.CoreCompileInputs.cache
+C:\Users\34615\Documents\PROGramación\Practica 5 MAP\obj\Debug\Practica 5 MAP.exe
+C:\Users\34615\Documents\PROGramación\Practica 5 MAP\obj\Debug\Practica 5 MAP.pdb
