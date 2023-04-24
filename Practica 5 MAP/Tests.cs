@@ -19,16 +19,6 @@ namespace PracticaBase
         string Valencia = "Valencia";
         string Sevilla = "Sevilla";
 
-        // Métodos auxiliares para crear tablero de pruebas
-        // a usar por los tests de unidad.
-
-        public void CreateTestBoard(out Board board)
-        {
-            board = new Board(5,20);
-            board.AddCity( Alejandretta, defensa, 1);
-        //    board.AddCity("Alejandretta", 2, 1);
-        //    board.AddCity("Troya", 0, 0);
-        }
 
         [Test]
         public void FindCityByNameTest()
@@ -36,9 +26,8 @@ namespace PracticaBase
         /// No se espera que haya ciudades con nombres repetidos
         {
             //Arrange
-            Board board = new Board(0, 0);
-
-            CreateTestBoard(out board);
+            Board board = new Board();
+            board.CreateTestBoard(board);
 
 
             //Act
