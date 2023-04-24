@@ -19,18 +19,17 @@ namespace PracticaBase
         string Valencia = "Valencia";
         string Sevilla = "Sevilla";
 
-        #region Tests Board
         // Métodos auxiliares para crear tablero de pruebas
         // a usar por los tests de unidad.
 
-        public void CreateTestBoard(out Board board) //No se como usarlo dentro del test
+        public void CreateTestBoard(out Board board)
         {
             board = new Board(5,20);
             board.AddCity( Alejandretta, defensa, 1);
         //    board.AddCity("Alejandretta", 2, 1);
         //    board.AddCity("Troya", 0, 0);
         }
-        #endregion
+
         [Test]
         public void FindCityByNameTest()
         /// Busca una ciudad por nombre y devuelve su posición dentro del array de ciudades del tablero.
