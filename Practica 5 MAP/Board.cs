@@ -66,15 +66,7 @@ namespace PracticaBase
 
         #region Tests Board
 
-        public void CreateTestBoard(out Board board)
-        // Métodos auxiliares para crear tablero de pruebas
-        // a usar por los tests de unidad.
-        {
-            board = new Board(5, 20);
-            board.AddCity(Alejandretta, defensa, 1);
-            //    board.AddCity("Alejandretta", 2, 1);
-            //    board.AddCity("Troya", 0, 0);
-        }
+ 
 
         public string GetCityName(int cityIndex)
         {

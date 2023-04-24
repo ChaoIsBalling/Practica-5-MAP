@@ -18,7 +18,16 @@ namespace PracticaBase
                Sevilla = "Sevilla";
         int defensa = 1,
             ataque = 2;
-        
+
+        public void CreateTestBoard(out Board board)
+        // Métodos auxiliares para crear tablero de pruebas
+        // a usar por los tests de unidad.
+        {
+            board = new Board(5, 20);
+            board.AddCity(Alejandretta, defensa, 1);
+            //    board.AddCity("Alejandretta", 2, 1);
+            //    board.AddCity("Troya", 0, 0);
+        }
 
         [Test]
         public void FindCityByNameTest()
@@ -58,14 +67,14 @@ namespace PracticaBase
             board2.AddCity(Troya, 1, 2);
 
             //Act
-            bool attacked = board2.AttackCity(1,1) //AttackCity(int cityIndex, int attackPoints)
+            bool attacked = board2.AttackCity(1, 1); //AttackCity(int cityIndex, int attackPoints)
 
             //Assert
             Assert.IsTrue(attacked,
                          "ERROR: La ciudad no ha sido atacada con éxito");
         }
 
-        //  [Test]
+        [Test]
         public void RemoveCityFromDeckTest()
         {
             //Arrange
@@ -73,14 +82,14 @@ namespace PracticaBase
             //AddCity(string cityName, int cityDefense, int cityPoints)
             board3.AddCity(Alejandretta, 3, 1);
             board3.AddCity(Troya, 1, 2);
-            board3.AddCityToDeck(1, 1);
-            board3.AddCityToDeck(2, 1);
-            board3.AddCityToDeck(3, 1);
+            board3.AddCityToDeck(Alejandretta, 1);
+            board3.AddCityToDeck(Troya, 1);
+            board3.AddCityToDeck(Sevilla, 1);
 
             //Act
-            bool removetest = board3.RemoveCityFromDeck(1,1)
-            bool removetest2 = board3.RemoveCityFromDeck(2, 1)
-            bool removetest3 = board3.RemoveCityFromDeck(1, 1)
+            bool removetest = board3.RemoveCityFromDeck(1, 1);
+            bool removetest2 = board3.RemoveCityFromDeck(2, 1);
+            bool removetest3 = board3.RemoveCityFromDeck(1, 1);
 
             //Assert
             Assert.IsTrue(removetest,
