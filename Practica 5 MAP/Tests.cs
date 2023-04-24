@@ -12,13 +12,12 @@ namespace PracticaBase
     [TestFixture]
     public class Tests
     {
-        string Alejandretta = "Alejandretta";
-        int defensa = 1;
-        int ataque = 2;
-        string Troya = "Troya";
-        string Valencia = "Valencia";
-        string Sevilla = "Sevilla";
-
+        string Alejandretta = "Alejandretta", 
+               Troya = "Troya",
+               Valencia = "Valencia",
+               Sevilla = "Sevilla";
+        int defensa = 1,
+            ataque = 2;
 
         [Test]
         public void FindCityByNameTest()
@@ -26,13 +25,12 @@ namespace PracticaBase
         /// No se espera que haya ciudades con nombres repetidos
         {
             //Arrange
-            Board board = new Board();
-            board.CreateTestBoard(board);
-
+            Board board = new Board(5, 3); //Creamos Board(maxcities, numdecks)
+            board.AddCity(Alejandretta, defensa, 1); //AddCity(nombre, defensa, puntos)
+            board.AddCityToDeck(Alejandretta, 2); //AddCityToDeck(string cityName, int deckIndex)
 
             //Act
             int city = board.FindCityByName(Alejandretta);
-
 
             //Assert
             Assert.That(board.GetCityName(city), Is.EqualTo(Alejandretta), "ERROR: Ciudad con nombre repetido");
