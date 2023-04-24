@@ -61,19 +61,34 @@ namespace PracticaBase
             bool attacked = board2.AttackCity(1,1) //AttackCity(int cityIndex, int attackPoints)
 
             //Assert
-            Assert.That(attacked,
-                        Is.EqualTo(ataque > defensa), 
-                        "Error: La ciudad no ha sido atacada.");
+            Assert.IsTrue(attacked,
+                         "ERROR: La ciudad no ha sido atacada con éxito");
         }
 
         //  [Test]
         public void RemoveCityFromDeckTest()
         {
             //Arrange
+            Board board3 = new Board(5, 3); //Board(int maxCities, int numDecks)
+            //AddCity(string cityName, int cityDefense, int cityPoints)
+            board3.AddCity(Alejandretta, 3, 1);
+            board3.AddCity(Troya, 1, 2);
+            board3.AddCityToDeck(1, 1);
+            board3.AddCityToDeck(2, 1);
+            board3.AddCityToDeck(3, 1);
 
             //Act
+            bool removetest = board3.RemoveCityFromDeck(1,1)
+            bool removetest2 = board3.RemoveCityFromDeck(2, 1)
+            bool removetest3 = board3.RemoveCityFromDeck(1, 1)
 
             //Assert
+            Assert.IsTrue(removetest,
+                          "ERROR: No se ha borrado la ciudad del mazo.");
+            Assert.IsTrue(removetest2,
+                          "ERROR: No se ha borrado la ciudad del mazo.");
+            Assert.IsTrue(removetest3,
+                          "ERROR: No se ha borrado la ciudad del mazo o ya ha sido borrada.");
 
         }
 
