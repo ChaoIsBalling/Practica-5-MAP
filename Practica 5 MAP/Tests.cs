@@ -52,14 +52,18 @@ namespace PracticaBase
         public void AttackCityTest()
         {
             //Arrange
-            Board board = new Board(0, 0);
-            
+            Board board2 = new Board(5, 3); //Board(int maxCities, int numDecks)
+            //AddCity(string cityName, int cityDefense, int cityPoints)
+            board2.AddCity(Alejandretta, 3, 1);
+            board2.AddCity(Troya, 1, 2);
+
             //Act
-        
+            bool attacked = board2.AttackCity(1,1) //AttackCity(int cityIndex, int attackPoints)
+
             //Assert
-            Assert.That(board.AttackCity(0, ataque),
-                        Is.EqualTo(ataque> defensa), 
-                        "Error");
+            Assert.That(attacked,
+                        Is.EqualTo(ataque > defensa), 
+                        "Error: La ciudad no ha sido atacada.");
         }
 
         //  [Test]
