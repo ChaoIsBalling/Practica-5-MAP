@@ -12,6 +12,11 @@ namespace PracticaBase
     [TestFixture]    
     public class Tests
     {
+        string Alejandretta = "Alejandretta";
+        string Troya = "Troya";
+        string Valencia = "Valencia";
+        string Sevilla = "Sevilla";
+
         #region Tests Board
         // Métodos auxiliares para crear tablero de pruebas
         // a usar por los tests de unidad.
@@ -31,20 +36,18 @@ namespace PracticaBase
         {
             //Arrange
             Board board = new Board();
-            board.AddCity("Alejandretta", 0, 1);
-            board.AddCity("Alejandretta", 2, 1);
-            board.AddCity("Troya", 0, 0);
+            board.AddCity(Alejandretta, 0, 1);
+            board.AddCity(Alejandretta, 2, 1);
+            board.AddCity(Troya, 0, 0);
 
             //Act
-            int city = board.FindCityByName("Alejandretta");
-            int city2 = board.FindCityByName("Troya");
-            int city3 = board.FindCityByName("Valencia");
-            int city4 = board.FindCityByName("Sevilla");
+            int city = board.FindCityByName(Alejandretta);
+            int city2 = board.FindCityByName(Troya);
+            int city3 = board.FindCityByName(Valencia);
+            int city4 = board.FindCityByName(Sevilla);
 
             //Assert
-            Assert.That( , //ejemplo
-                         ,
-                        "ERROR: Ciudad con nombre repetido");
+            Assert.That(board.GetCityName(city), Is.EqualTo("Alejandretta"),"ERROR: Ciudad con nombre repetido");
             Assert.That( , //ejemplo
                          ,
                         "ERROR: Ciudad no encontrada");
