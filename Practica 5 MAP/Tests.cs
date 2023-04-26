@@ -176,19 +176,22 @@ namespace PracticaBase
             Board board = new Board(0, 0);
             CreateTestBoard(out board);
             Player player = new Player(20, 6, 1);
+            
             //Act
-
-            bool attack = true;
-            bool attack2 = true;
-            bool attack3 = true;
+            bool attack = true,
+                 attack2 = true,
+                 attack3 = true;
 
             CreateTestPlayer(out player,ref board,ref attack,ref attack2,ref attack3);
+
             //Assert
             Assert.IsTrue(attack, "Error:El ataque no funciona");
             Assert.IsTrue(attack2, "Error:El ataque no funciona");
             Assert.IsTrue(attack3, "Error:El ataque no funciona");
-            Assert.That(() => { player.AttackCity(board, Paris); }, Throws.Exception, "ERROR: AttackCity no Lanza excepción cuando la ciudad no existe");
-            Assert.That(() => { player.AttackCity(board, Troya); }, Throws.Exception, "ERROR: AttackCity no Lanza excepción cuando la ciudad no está en el mazo");
+            Assert.That(() => { player.AttackCity(board, Paris); }, Throws.Exception,
+                         "ERROR: AttackCity no Lanza excepción cuando la ciudad no existe");
+            Assert.That(() => { player.AttackCity(board, Troya); }, Throws.Exception,
+                         "ERROR: AttackCity no Lanza excepción cuando la ciudad no está en el mazo");
         }
     }
 }
