@@ -24,9 +24,14 @@ namespace PracticaBase
         // a usar por los tests de unidad.
         {
             board = new Board(5, 6);
-            board.AddCity(Alejandretta, defensa, 1);
-            //    board.AddCity("Alejandretta", 2, 1);
-            //    board.AddCity("Troya", 0, 0);
+            board.AddCity(Alejandretta, 1, 2);
+            board.AddCity(Troya, 1, 1);
+            board.AddCity(Sevilla, 1, 4);
+            board.AddCity(Valencia, 1, 3);
+            board.AddCityToDeck(Alejandretta, 1);
+            board.AddCityToDeck(Troya, 2);
+            board.AddCityToDeck(Sevilla, 3);
+
         }
 
         [Test]
@@ -38,7 +43,6 @@ namespace PracticaBase
             Board board = new Board(5, 3); //Board(int maxCities, int numDecks)
             //AddCity(string cityName, int cityDefense, int cityPoints)
             board.AddCity(Alejandretta, 1, 1); 
-            board.AddCity(Alejandretta, 1, 2);
             board.AddCity(Troya,1,1);
             board.AddCity(Sevilla,1,2);
             board.AddCity(Valencia,1,3);
@@ -50,7 +54,7 @@ namespace PracticaBase
 
             //Assert
             Assert.That(city1,
-                        Is.EqualTo(2), //numero esperado
+                        Is.EqualTo(1), //numero esperado
                         "ERROR: No se ha encontrado la ciudad en la lista de ciudades."); //si no, test falla
         
         }
@@ -152,14 +156,23 @@ namespace PracticaBase
 
         }
 
-        //[Test]
+        [Test]
         public void ComputePlayerPointsTest()
         {
             //Arrange
-
+            Board board = new Board(0, 0);
+            CreateTestBoard(out board);
+            Player player = new Player(20,6,1);
+           
             //Act
-
+            player.AttackCity(board, Alejandretta);
+            player.Move(board,1, Direction.Right);
+            player.AttackCity (board,Troya);
+            player.Move(board,1, Direction.Right);
+           
+            player.AttackCity(board,Sevilla);
             //Assert
+            Assert.That(player.ComputePlayerPoints(board), Is.EqualTo(7), "Error: no se han obtenido puntos.");
 
         }
         //[Test]
