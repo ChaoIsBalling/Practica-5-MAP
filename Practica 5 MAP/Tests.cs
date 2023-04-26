@@ -50,12 +50,9 @@ namespace PracticaBase
         /// No se espera que haya ciudades con nombres repetidos
         {
             //Arrange
-            Board board = new Board(5, 3); //Board(int maxCities, int numDecks)
-            //AddCity(string cityName, int cityDefense, int cityPoints)
-            board.AddCity(Alejandretta, 1, 1); 
-            board.AddCity(Troya,1,1);
-            board.AddCity(Sevilla,1,2);
-            board.AddCity(Valencia,1,3);
+            Board board = new Board(0, 0); //Board(int maxCities, int numDecks)
+            CreateTestBoard(out board);
+            
 
             //Act
             int city1 = board.FindCityByName(Troya);
@@ -73,10 +70,9 @@ namespace PracticaBase
         public void AttackCityTest()
         {
             //Arrange
-            Board board2 = new Board(5, 3); //Board(int maxCities, int numDecks)
-            //AddCity(string cityName, int cityDefense, int cityPoints)
-            board2.AddCity(Alejandretta, 3, 1);
-            board2.AddCity(Troya, 1, 2);
+            Board board2 = new Board(0, 0); //Board(int maxCities, int numDecks)
+                                            //AddCity(string cityName, int cityDefense, int cityPoints)
+            CreateTestBoard(out board2);
 
             //Act
             bool attacked = board2.AttackCity(1, 2); //AttackCity(int cityIndex, int attackPoints)
