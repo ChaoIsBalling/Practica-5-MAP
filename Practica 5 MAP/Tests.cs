@@ -50,11 +50,9 @@ namespace PracticaBase
 
             //Assert
             Assert.That(city1,
-                        Is.EqualTo(3), //numero esperado
+                        Is.EqualTo(2), //numero esperado
                         "ERROR: No se ha encontrado la ciudad en la lista de ciudades."); //si no, test falla
-            Assert.That(city1,
-                        Is.EqualTo(1), //numero esperado
-                        "ERROR: Se han encontrado ciudades repetidas.");
+        
         }
 
         [Test]
@@ -67,7 +65,7 @@ namespace PracticaBase
             board2.AddCity(Troya, 1, 2);
 
             //Act
-            bool attacked = board2.AttackCity(1, 1); //AttackCity(int cityIndex, int attackPoints)
+            bool attacked = board2.AttackCity(1, 2); //AttackCity(int cityIndex, int attackPoints)
 
             //Assert
             Assert.IsTrue(attacked,
@@ -110,6 +108,24 @@ namespace PracticaBase
             //Act
 
             //Assert
+
+        }
+
+        //[Test]
+
+        public void PlayerMoveTest()
+        {
+
+        }
+
+        //[Test]
+        public void ComputePlayerPointsTest()
+        {
+
+        }
+        //[Test]
+        public void AttackCityPlayerTest()
+        {
 
         }
     }
