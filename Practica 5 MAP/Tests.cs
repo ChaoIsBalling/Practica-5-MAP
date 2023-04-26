@@ -12,13 +12,13 @@ namespace PracticaBase
     [TestFixture]
     public class Tests
     {
-        string Alejandretta = "Alejandretta", 
+        string Alejandretta = "Alejandretta", //Para evitar String typing y que no halla errores tontos
                Troya = "Troya",
                Valencia = "Valencia",
-               Sevilla = "Sevilla";
-        int defensa = 1,
-            ataque = 2;
+               Sevilla = "Sevilla",
+               Paris = "Paris";
 
+        #region Test Board
         public void CreateTestBoard(out Board board)
         // Métodos auxiliares para crear tablero de pruebas
         // a usar por los tests de unidad.
@@ -31,8 +31,8 @@ namespace PracticaBase
             board.AddCityToDeck(Alejandretta, 1);
             board.AddCityToDeck(Troya, 2);
             board.AddCityToDeck(Sevilla, 3);
-
         }
+        #endregion
 
         public void CreateTestPlayer(out Player player, ref Board board, ref bool attack,ref bool attack2, ref bool attack3)
         {
@@ -50,16 +50,12 @@ namespace PracticaBase
         /// No se espera que haya ciudades con nombres repetidos
         {
             //Arrange
-            Board board = new Board(5, 3); //Board(int maxCities, int numDecks)
-            //AddCity(string cityName, int cityDefense, int cityPoints)
-            board.AddCity(Alejandretta, 1, 1); 
-            board.AddCity(Troya,1,1);
-            board.AddCity(Sevilla,1,2);
-            board.AddCity(Valencia,1,3);
+            Board board = new Board(5, 3);
+            CreateTestBoard(out board);
 
             //Act
             int city1 = board.FindCityByName(Troya);
-            int city2 = board.FindCityByName(Sevilla);
+            int city2 = board.FindCityByName(Paris);
 
             //Assert
             Assert.That(city1,
@@ -74,12 +70,11 @@ namespace PracticaBase
         public void AttackCityTest()
         {
             //Arrange
-            Board board2 = new Board(0, 0); //Board(int maxCities, int numDecks)
-                                            //AddCity(string cityName, int cityDefense, int cityPoints)
+            Board board2 = new Board(0, 0);
             CreateTestBoard(out board2);
 
             //Act
-            bool attacked = board2.AttackCity(1, 2); //AttackCity(int cityIndex, int attackPoints)
+            bool attacked = board2.AttackCity(1, 2);
 
             //Assert
             Assert.IsTrue(attacked,
@@ -90,8 +85,7 @@ namespace PracticaBase
         public void RemoveCityFromDeckTest()
         {
             //Arrange
-            Board board3 = new Board(0, 0); //Board(int maxCities, int numDecks)
-            //AddCity(string cityName, int cityDefense, int cityPoints)
+            Board board3 = new Board(0, 0);
             CreateTestBoard(out board3);
 
             //Act
@@ -117,7 +111,6 @@ namespace PracticaBase
             Board board = new Board(0, 0);
             CreateTestBoard(out board);
 
-            
             //Act
             int Move1 = board.Move(0, 1, Direction.Left);
             int Move2 = board.Move(0, 1, Direction.Right);
@@ -126,7 +119,6 @@ namespace PracticaBase
             int Move5 = board.Move(0, 6, Direction.Left);
 
             //Assert
-
             Assert.IsTrue(Move1 == 5, "Error: El movimiento no es cíclico/no funciona bien");
             Assert.IsTrue(Move2 == 1, "Error: El movimiento no es cíclico/no funciona bien");
             Assert.IsTrue(Move3 == 0, "Error: El movimiento no es cíclico/no funciona bien");
@@ -168,14 +160,15 @@ namespace PracticaBase
             Player player = new Player(20,6,1);
 
             //Act
-            bool attack = true;
-            bool attack2 = true;
-            bool attack3 = true;
+            bool attack = true,
+                 attack2 = true,
+                 attack3 = true;
             CreateTestPlayer(out player, ref board, ref attack, ref attack2, ref attack3);
+
             //Assert
             Assert.That(player.ComputePlayerPoints(board), Is.EqualTo(7), "Error: no se han obtenido puntos.");
-
         }
+
         [Test]
         public void AttackCityPlayerTest()
         {
@@ -194,10 +187,8 @@ namespace PracticaBase
             Assert.IsTrue(attack, "Error:El ataque no funciona");
             Assert.IsTrue(attack2, "Error:El ataque no funciona");
             Assert.IsTrue(attack3, "Error:El ataque no funciona");
-            Assert.That(() => { player.AttackCity(board, "Paris"); }, Throws.Exception, "ERROR: AttackCity no Lanza excepción cuando la ciudad no existe");
+            Assert.That(() => { player.AttackCity(board, Paris); }, Throws.Exception, "ERROR: AttackCity no Lanza excepción cuando la ciudad no existe");
             Assert.That(() => { player.AttackCity(board, Troya); }, Throws.Exception, "ERROR: AttackCity no Lanza excepción cuando la ciudad no está en el mazo");
-
         }
     }
-
 }
