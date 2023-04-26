@@ -34,6 +34,16 @@ namespace PracticaBase
 
         }
 
+        public void CreateTestPlayer(out Player player, ref Board board, ref bool attack,ref bool attack2, ref bool attack3)
+        {
+            player = new Player(20, 6, 1);
+            attack = player.AttackCity(board, Alejandretta);
+            player.Move(board, 1, Direction.Right);
+            attack2 = player.AttackCity(board, Troya);
+            player.Move(board, 1, Direction.Right);
+            attack3 = player.AttackCity(board, Sevilla);
+        }
+
         [Test]
         public void FindCityByNameTest()
         /// Busca una ciudad por nombre y devuelve su posición dentro del array de ciudades del tablero.
@@ -168,21 +178,29 @@ namespace PracticaBase
             player.AttackCity(board, Alejandretta);
             player.Move(board,1, Direction.Right);
             player.AttackCity (board,Troya);
-            player.Move(board,1, Direction.Right);
-           
+            player.Move(board,1, Direction.Right);    
             player.AttackCity(board,Sevilla);
             //Assert
             Assert.That(player.ComputePlayerPoints(board), Is.EqualTo(7), "Error: no se han obtenido puntos.");
 
         }
-        //[Test]
+        [Test]
         public void AttackCityPlayerTest()
         {
             //Arrange
-
+            Board board = new Board(0, 0);
+            CreateTestBoard(out board);
+            Player player = new Player(20, 6, 1);
             //Act
 
+            bool attack = true;
+            bool attack2 = true;
+            bool attack3 = true;
+
+            CreateTestPlayer(out player,ref board,ref attack,ref attack2,ref attack3);  
             //Assert
+            Assert.That(() => { player.AttackCity(board, "Paris"); }, Throws.Exception, "ERROR: AttackCity no Lanza excepción cuando la ciudad no existe");
+            Assert.That(() => { player.AttackCity(board, Troya); }, Throws.Exception, "ERROR: AttackCity no Lanza excepción cuando la ciudad no está en el mazo");
 
         }
     }
