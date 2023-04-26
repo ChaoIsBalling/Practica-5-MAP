@@ -123,33 +123,31 @@ namespace PracticaBase
             Assert.IsTrue(Move3 == 0, "Error: El movimiento no es cíclico/no funciona bien");
             Assert.IsTrue(Move4 == 0, "Error: El movimiento no es cíclico/no funciona bien");
             Assert.IsTrue(Move5 == 0, "Error: El movimiento no es cíclico/no funciona bien");
-
-
-
-
-
         }
 
         [Test]
         public void PlayerMoveTest()
         {
             //Arrange
-            Player player = new Player(1,2,2);
-            Player player2= new Player(0,4,5);
-            Board board = new Board(2,2);
+            Board board = new Board(1,5);
+            Player player = new Player(1, 1, 1); //1 movimiento
+            Player player2 = new Player(2, 1, 1); //2 movimientos
 
             //Act
-            //el método puede lanzar excepciones
-            bool move = player.Move(board, 1, Direction.Right);
-            bool move2 = player2.Move(board, -1, Direction.Left);
+            bool move = player.Move(board, 1, Direction.Right); //1step
+            bool move2 = player2.Move(board, 1, Direction.Right);
 
             //Assert
-            //Devuelve si el jugador ha agotado sus movimientos.
-            Assert.IsTrue(move,
-                          "ERROR: El jugaor no ha agotado sus movimientos.");
-            Assert.IsTrue(move,
-                          "ERROR: ");
-
+            Assert.IsTrue(move, //Devuelve true si el jugador ha agotado sus movimientos.
+                         "ERROR: El jugador no ha agotado sus movimientos.");
+            Assert.IsFalse(move2, //Devuelve false porque el jugador aun tiene movimientos.
+                          "ERROR: El jugador no ha agotado sus movimientos.");
+            Assert.That(() => { player.Move(board, -1, Direction.Left); },
+                         Throws.Exception, //Devuelve Exception
+                         "ERROR: No lanza excepción por número de pasos negativos.");
+            Assert.That(() => { player.Move(board, 3, Direction.Right); },
+                         Throws.Exception, //Devuelve Exception
+                         "ERROR: No lanza excepción porque no hay suficientes movimientos.");
         }
 
         //[Test]
