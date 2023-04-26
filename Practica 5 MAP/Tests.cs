@@ -130,21 +130,46 @@ namespace PracticaBase
 
         }
 
-        //[Test]
-
+        [Test]
         public void PlayerMoveTest()
         {
+            //Arrange
+            Player player = new Player(1,2,2);
+            Player player2= new Player(0,4,5);
+            Board board = new Board(2,2);
+
+            //Act
+            //el método puede lanzar excepciones
+            bool move = player.Move(board, 1, Direction.Right);
+            bool move2 = player2.Move(board, -1, Direction.Left);
+
+            //Assert
+            //Devuelve si el jugador ha agotado sus movimientos.
+            Assert.IsTrue(move,
+                          "ERROR: El jugaor no ha agotado sus movimientos.");
+            Assert.IsTrue(move,
+                          "ERROR: ");
 
         }
 
         //[Test]
         public void ComputePlayerPointsTest()
         {
+            //Arrange
+
+            //Act
+
+            //Assert
 
         }
         //[Test]
         public void AttackCityPlayerTest()
         {
+            //Arrange
+
+            //Act
+
+            //Assert
 
         }
     }
