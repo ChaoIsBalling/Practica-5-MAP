@@ -90,18 +90,14 @@ namespace PracticaBase
         public void RemoveCityFromDeckTest()
         {
             //Arrange
-            Board board3 = new Board(5, 3); //Board(int maxCities, int numDecks)
+            Board board3 = new Board(0, 0); //Board(int maxCities, int numDecks)
             //AddCity(string cityName, int cityDefense, int cityPoints)
-            board3.AddCity(Alejandretta, 3, 1);
-            board3.AddCity(Troya, 1, 2);
-            board3.AddCityToDeck(Alejandretta, 1);
-            board3.AddCityToDeck(Troya, 1);
-            board3.AddCityToDeck(Sevilla, 1);
+            CreateTestBoard(out board3);
 
             //Act
             bool removetest = board3.RemoveCityFromDeck(1, 0);
-            bool removetest2 = board3.RemoveCityFromDeck(1, 1);
-            bool removetest3 = board3.RemoveCityFromDeck(1, 0);
+            bool removetest2 = board3.RemoveCityFromDeck(2, 1);
+            bool removetest3 = board3.RemoveCityFromDeck(2, 1);
 
             //Assert
             Assert.IsTrue(removetest,
