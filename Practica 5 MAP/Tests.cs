@@ -44,19 +44,20 @@ namespace PracticaBase
             //AddCity(string cityName, int cityDefense, int cityPoints)
             board.AddCity(Alejandretta, 1, 1); 
             board.AddCity(Troya,1,1);
-            board.AddCity(Sevilla,1,2);
             board.AddCity(Valencia,1,3);
 
             //Act
             int city1 = board.FindCityByName(Troya);
-            int city2 = board.FindCityByName(Alejandretta);
+            int city2 = board.FindCityByName(Sevilla);
 
 
             //Assert
             Assert.That(city1,
                         Is.EqualTo(1), //numero esperado
                         "ERROR: No se ha encontrado la ciudad en la lista de ciudades."); //si no, test falla
-        
+            Assert.That(city2,
+                        Is.EqualTo(-1), //numero esperado
+                        "ERROR: Se ha encontrado la ciudad, cuando no ha sido añadida."); //si no, test falla
         }
 
         [Test]

@@ -64,17 +64,6 @@ namespace PracticaBase
             nDecks = numDecks;
         }
 
-        #region Tests Board
-
- 
-
-        public string GetCityName(int cityIndex)
-        {
-            return cities[cityIndex].name;
-        }
-
-        #endregion
-
         /// <summary>
         /// Intenta crear una carta de ciudad en el tablero
         /// </summary>
