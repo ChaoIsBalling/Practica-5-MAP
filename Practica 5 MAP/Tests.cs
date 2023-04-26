@@ -57,12 +57,9 @@ namespace PracticaBase
             board.AddCity(Sevilla,1,2);
             board.AddCity(Valencia,1,3);
 
-
-            int city2 = board.FindCityByName(Alejandretta);
             //Act
             int city1 = board.FindCityByName(Troya);
             int city2 = board.FindCityByName(Sevilla);
-
 
             //Assert
             Assert.That(city1,
@@ -114,7 +111,6 @@ namespace PracticaBase
             //Este assert da error, es a proposito.
            /* Assert.IsTrue(removetest3,
                           "ERROR: No se ha borrado la ciudad del mazo o ya ha sido borrada.");*/
-
         }
 
         [Test]
